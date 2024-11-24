@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #34495e;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: #3498db;
+            margin: 0 10px;
+            font-size: 1.8em;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #2980b9;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 1em;
+        }
+
+        .colored-section {
+            background-color: #ecf0f1;
+            padding: 10px 0;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .colored-section:nth-child(even) {
+            background-color: #bdc3c7;
+        }
+
+        .response-form {
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .response-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .response-form input,
+        .response-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .response-form button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .response-form button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .responses {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .response {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function enviarResposta(event) {
+            event.preventDefault();
+            var nome = document.getElementById('nome').value;
+            var mensagem = document.getElementById('mensagem').value;
+            var responsesDiv = document.getElementById('responses');
+
+            var responseDiv = document.createElement('div');
+            responseDiv.classList.add('response');
+
+            var responseNome = document.createElement('p');
+            responseNome.innerHTML = '<strong>Nome:</strong> ' + nome;
+
+            var responseMensagem = document.createElement('p');
+            responseMensagem.innerHTML = '<strong>Mensagem:</strong> ' + mensagem;
+
+            responseDiv.appendChild(responseNome);
+            responseDiv.appendChild(responseMensagem);
+
+            responsesDiv.appendChild(responseDiv);
+
+            document.getElementById('response-form').reset();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Você está convidado!</h1>
+        <div class="colored-section">
+            <p>Gostaríamos de convidá-lo para celebrar <strong>[Nome do Evento]</strong>.</p>
+        </div>
+        <div class="colored-section">
+            <p><strong>Data:</strong> [Data]</p>
+        </div>
+        <div class="colored-section">
+            <p><strong>Hora:</strong> [Hora]</p>
+        </div>
+        <div class="colored-section">
+            <p><strong>Local:</strong> [Local]</p>
+        </div>
+        <p>Por favor, confirme sua presença respondendo a este convite.</p>
+        <a href="mailto:email@exemplo.com" class="button">Confirmar Presença</a>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://web.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:email@exemplo.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <div class="response-form">
+            <h2>Deixe sua Mensagem</h2>
+            <form id="response-form" onsubmit="enviarResposta(event)">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <div class="responses" id="responses">
+            <h2>Respostas Recebidas</h2>
+            <!-- As respostas serão exibidas aqui -->
+        </div>
+        
+        <footer>
+            <p>&copy; 2024 Convite Online - Todos os Direitos Reservados</p>
+        </footer>
+    </div>
+</body>
+</html>
